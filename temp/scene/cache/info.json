@@ -1,0 +1,15 @@
+{
+    "systemInfo": {
+        "arch": "arm64",
+        "cpu": "Apple M1",
+        "version": "Darwin Kernel Version 23.2.0: Wed Nov 15 21:53:34 PST 2023; root:xnu-10002.61.3~2/RELEASE_ARM64_T8103"
+    },
+    "sceneListMap": {
+        "09762e60-750f-4bde-85d0-4d7521fef822": "/Users/vladislavkvinto/StickMan/assets/scenes/Maniscene.scene",
+        "853ab32c-7725-4a01-a630-f885321f6499": "/Users/vladislavkvinto/StickMan/assets/scenes/MainMenu.scene",
+        "b720d974-8061-41d4-bfb6-73e624aeab64": "/Users/vladislavkvinto/StickMan/assets/prefabs/prepyadstvie.prefab",
+        "0cd188f5-5f01-45af-8631-b1969a69b626": "/Users/vladislavkvinto/StickMan/assets/prefabs/Bridge.prefab",
+        "d97104de-cea4-4b99-bab6-ca3fd93e88b4": "/Users/vladislavkvinto/StickMan/assets/prefabs/Sensor.prefab"
+    },
+    "deviceMd5": "f8a15c342a60330548d170d60a9dc985"
+}

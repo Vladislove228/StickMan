@@ -1,18 +1,50 @@
-import { _decorator, Component, director } from 'cc';
+import { _decorator, Component, director, Node, Tween, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainMenu')
 export class MainMenu extends Component {
-    start() {
+    @property(Node)
+    player: Node;
 
+    @property(Node)
+    platform: Node;
+
+    private animationsCompleted = 0;  // Счетчик завершенных анимаций
+
+    start() {
+    }
+
+    private initializeAnimation() {
+        const playerCurrentY = this.player.getPosition().y;
+        const platformCurrentY = this.platform.getPosition().y;
+
+        new Tween(this.player)
+            .to(1.0, { position: new Vec3(-350, playerCurrentY, 0) }, { easing: 'quadInOut' })
+            .call(() => {
+                this.checkAllAnimationsCompleted();
+            })
+            .start();
+
+        new Tween(this.platform)
+            .to(1.0, { position: new Vec3(-350, platformCurrentY, 0) }, { easing: 'quadInOut' })
+            .call(() => {
+                this.checkAllAnimationsCompleted();
+            })
+            .start();
+    }
+
+    private checkAllAnimationsCompleted() {
+        this.animationsCompleted++;
+        if (this.animationsCompleted >= 2) {  // Проверяем, что обе анимации завершены
+            director.loadScene("MainScene");
+        }
     }
 
     private startGame() {
-        director.loadScene("MainScene");
+        this.animationsCompleted = 0;  // Сброс счетчика
+        this.initializeAnimation();
     }
 
     update(deltaTime: number) {
-        
     }
 }
-

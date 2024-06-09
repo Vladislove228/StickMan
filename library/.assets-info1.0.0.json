@@ -24,7 +24,7 @@
       "uuid": "54b1a50a-df05-4fe0-98c5-e57412d43635"
     },
     "/Users/vladislavkvinto/StickMan/assets/prefabs": {
-      "time": 1717337795771.532,
+      "time": 1717944740520.0164,
       "uuid": "09689a56-8622-4d64-97f7-35ed3dd3634a"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes": {
@@ -32,15 +32,15 @@
       "uuid": "e4878d43-6d9a-49f3-a0e5-5509e466e568"
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts": {
-      "time": 1717353610832.1309,
+      "time": 1717944791087.9185,
       "uuid": "f9b6df97-3a3e-4d36-bf0f-963af94eebd4"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures": {
-      "time": 1717089702161.1587,
+      "time": 1717944813506.9795,
       "uuid": "bc904e34-6fc5-432d-a051-f04b4de38c56"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta": {
-      "time": 1716994157000,
+      "time": 1717944725011.524,
       "uuid": "14842078-6b59-4327-93c9-c2b21acadffb"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/fon2.png.meta": {
@@ -145,28 +145,28 @@
       "time": 1717089267373.4062
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts": {
-      "time": 1717353610832.0876,
+      "time": 1717944791087.8303,
       "uuid": "65bb5cc6-c076-4285-889d-835aeaca32ee"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainMenu.scene.meta": {
       "time": 1717089607567.5054
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainMenu.scene": {
-      "time": 1717098304069.1045,
+      "time": 1717941981602.5637,
       "uuid": "853ab32c-7725-4a01-a630-f885321f6499"
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts.meta": {
       "time": 1717089756131.1484
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts": {
-      "time": 1717090636390.134,
+      "time": 1717938155849.2505,
       "uuid": "b7c513d0-0639-4df4-a490-ee2706c9fe0a"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainScene.scene.meta": {
       "time": 1717088918716.0667
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainScene.scene": {
-      "time": 1717353796863.598,
+      "time": 1717941992412.7087,
       "uuid": "09762e60-750f-4bde-85d0-4d7521fef822"
     },
     "/Users/vladislavkvinto/StickMan/assets/prefabs/Platform.prefab.meta": {
@@ -182,6 +182,55 @@
     "/Users/vladislavkvinto/StickMan/assets/prefabs/Bridge.prefab": {
       "time": 1717344545232.1094,
       "uuid": "0cd188f5-5f01-45af-8631-b1969a69b626"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts.meta": {
+      "time": 1717768493738.206
+    },
+    "/Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts": {
+      "time": 1717934436925.3894,
+      "uuid": "78a8f4f7-b61f-490d-bfc2-33e6ddc087aa"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio.meta": {
+      "time": 1717939625680.6055
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio": {
+      "time": 1717940140054.0251,
+      "uuid": "1c4ef94d-bac2-4acc-b2e7-c0ecdd790ff7"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/lose.mp3.meta": {
+      "time": 1717939950201.9255
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/lose.mp3": {
+      "time": 1717939854172.12,
+      "uuid": "bc99dd8c-9977-46ae-9a1a-8cbc7a03b28f"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/win.mp3.meta": {
+      "time": 1717939954005.7136
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/win.mp3": {
+      "time": 1717939940434.5068,
+      "uuid": "bf2ad7b1-eee9-467d-8dd6-ab2fd8a39d3f"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/back.mp3.meta": {
+      "time": 1717940140072.5305
+    },
+    "/Users/vladislavkvinto/StickMan/assets/audio/back.mp3": {
+      "time": 1717940128915.883,
+      "uuid": "2150db29-d3c3-4099-ab10-f646be1da4f8"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/textures/point.png.meta": {
+      "time": 1717944669577.0337
+    },
+    "/Users/vladislavkvinto/StickMan/assets/textures/point.png": {
+      "time": 1717944631602.088,
+      "uuid": "2cd77e4d-35e8-421a-99cb-cad198139492"
+    },
+    "/Users/vladislavkvinto/StickMan/assets/prefabs/point.prefab.meta": {
+      "time": 1717944740522.998
+    },
+    "/Users/vladislavkvinto/StickMan/assets/prefabs/point.prefab": {
+      "time": 1717944796352.5452,
+      "uuid": "4451fafe-7655-48cb-b20c-b85ba17fa0d7"
     }
   },
   "missing": {
@@ -229,6 +278,21 @@
       "path": "/Users/vladislavkvinto/StickMan/assets/prefabs/Sensor.prefab",
       "time": 1717332791617.089,
       "removeTime": 1717337795772
+    },
+    "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/point.webp",
+      "time": 1717944631602.088,
+      "removeTime": 1717944669445
+    },
+    "782eb875-abde-467d-9aeb-c402807c4654": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/prefabs/Point.prefab",
+      "time": 1717944517779.3828,
+      "removeTime": 1717944697969
+    },
+    "2cd77e4d-35e8-421a-99cb-cad198139492": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/point.png",
+      "time": 1717944631602.088,
+      "removeTime": 1717944725012
     }
   }
 }

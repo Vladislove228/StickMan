@@ -432,10 +432,17 @@
         "09762e60-750f-4bde-85d0-4d7521fef822",
         "dead1a2a-3bf4-44a1-b06c-fa419515664c@f9941",
         "76a01175-2b47-45ab-b497-e63dacfb6c2a@f9941",
+        "9b92f4e1-35db-48cb-b975-f1c45b7904e7@f9941",
+        "b2b5bd90-e84b-4fb8-bfbc-573163bc5445@f9941",
+        "1d318b6c-2e4f-484e-aebf-28b181a73d3f@f9941",
         "b720d974-8061-41d4-bfb6-73e624aeab64",
-        "0cd188f5-5f01-45af-8631-b1969a69b626"
+        "0cd188f5-5f01-45af-8631-b1969a69b626",
+        "2150db29-d3c3-4099-ab10-f646be1da4f8",
+        "bc99dd8c-9977-46ae-9a1a-8cbc7a03b28f",
+        "bf2ad7b1-eee9-467d-8dd6-ab2fd8a39d3f"
       ],
       "dependScripts": [
+        "78a8f4f7-b61f-490d-bfc2-33e6ddc087aa",
         "65bb5cc6-c076-4285-889d-835aeaca32ee"
       ]
     },
@@ -505,6 +512,100 @@
   "d97104de-cea4-4b99-bab6-ca3fd93e88b4": {
     "url": "db://assets/prefabs/Sensor.prefab",
     "value": {},
+    "versionCode": 1
+  },
+  "78a8f4f7-b61f-490d-bfc2-33e6ddc087aa": {
+    "url": "db://assets/scripts/FailureWindow.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "1c4ef94d-bac2-4acc-b2e7-c0ecdd790ff7": {
+    "url": "db://assets/audio",
+    "value": {},
+    "versionCode": 1
+  },
+  "bc99dd8c-9977-46ae-9a1a-8cbc7a03b28f": {
+    "url": "db://assets/audio/lose.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bf2ad7b1-eee9-467d-8dd6-ab2fd8a39d3f": {
+    "url": "db://assets/audio/win.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2150db29-d3c3-4099-ab10-f646be1da4f8": {
+    "url": "db://assets/audio/back.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "782eb875-abde-467d-9aeb-c402807c4654": {
+    "url": "db://assets/prefabs/Point.prefab",
+    "value": {},
+    "versionCode": 1
+  },
+  "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3": {
+    "url": "db://assets/textures/point.webp",
+    "value": {},
+    "versionCode": 1
+  },
+  "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3@6c48a": {
+    "url": "db://assets/textures/point.webp@6c48a",
+    "value": {
+      "depends": [
+        "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3@f9941": {
+    "url": "db://assets/textures/point.webp@f9941",
+    "value": {
+      "depends": [
+        "1fc5dd0d-d2fb-4e9a-81cf-b2cb760a88d3@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2cd77e4d-35e8-421a-99cb-cad198139492": {
+    "url": "db://assets/textures/point.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2cd77e4d-35e8-421a-99cb-cad198139492@6c48a": {
+    "url": "db://assets/textures/point.png@6c48a",
+    "value": {
+      "depends": [
+        "2cd77e4d-35e8-421a-99cb-cad198139492"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2cd77e4d-35e8-421a-99cb-cad198139492@f9941": {
+    "url": "db://assets/textures/point.png@f9941",
+    "value": {
+      "depends": [
+        "2cd77e4d-35e8-421a-99cb-cad198139492@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4451fafe-7655-48cb-b20c-b85ba17fa0d7": {
+    "url": "db://assets/prefabs/point.prefab",
+    "value": {
+      "depends": [
+        "2cd77e4d-35e8-421a-99cb-cad198139492@f9941"
+      ],
+      "dependScripts": []
+    },
     "versionCode": 1
   }
 }

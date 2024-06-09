@@ -1,6 +1,6 @@
 import {
     _decorator, Component, Node, input, Input, Prefab, director, instantiate, RigidBody2D, Vec2,
-    Label, UITransform, v3, Vec3, Sprite, Tween
+    Label, UITransform, v3, Vec3, Sprite, Tween, AudioSource, AudioClip
 } from 'cc';
 
 const {ccclass, property} = _decorator;
@@ -18,10 +18,26 @@ export class GameManager extends Component {
     failureWindow: Node;
 
     @property(Prefab)
-    bridge: Prefab;  // Prefab для моста
+    bridge: Prefab;
+
+    @property(Prefab)
+    point: Prefab;
 
     @property(Label)
     scoreLabel: Label;
+
+    @property(Label)
+    bestScoreLabel: Label;
+
+    @property(AudioClip)
+    backgroundMusic: AudioClip;
+
+    @property(AudioClip)
+    bridgeFallSound: AudioClip;
+
+    @property(AudioClip)
+    winSound: AudioClip;
+
 
     isGameStarted = false;
     isGrowingBridge = false;
@@ -33,13 +49,16 @@ export class GameManager extends Component {
     currentPlatform: Node;
     nextPlatform: Node;
 
+    scoreArray = [];
+
     start() {
+
+        this.playSoundEffect(this.backgroundMusic);
+
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         this.generateInitialPlatforms();
-        // Включаем физическую систему, если она будет использоваться
-        // PhysicsSystem2D.instance.enable = true;
-        // PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+
     }
 
     onTouchStart() {
@@ -54,9 +73,6 @@ export class GameManager extends Component {
         if (this.currentBridge) {
             this.scheduleOnce(() => {
                 this.currentBridge.setRotationFromEuler(0, 0, -90);
-                // Если нужно управление физикой
-                // const rigidBody = this.currentBridge.getComponent(RigidBody2D) || this.currentBridge.addComponent(RigidBody2D);
-                // rigidBody.type = RigidBody2D.Type.Static;
 
                 this.scheduleOnce(() => {
                     this.goNextPlatform();
@@ -65,19 +81,11 @@ export class GameManager extends Component {
         }
     }
 
+
     private goNextPlatform() {
-        if (!this.currentPlatform || !this.nextPlatform || !this.currentBridge) {
-            console.log("Некоторые элементы отсутствуют.");
-            return;
-        }
 
         const currentPlatformTransform = this.currentPlatform.getComponent(UITransform);
         const nextPlatformTransform = this.nextPlatform.getComponent(UITransform);
-
-        if (!currentPlatformTransform || !nextPlatformTransform) {
-            console.log("Не удалось получить компоненты UITransform.");
-            return;
-        }
 
         const currentPlatformPos = this.currentPlatform.getPosition();
         const nextPlatformPos = this.nextPlatform.getPosition();
@@ -86,47 +94,79 @@ export class GameManager extends Component {
         const nextPlatwormWidth = nextPlatformTransform.contentSize.width;
 
         const distanceBetweenPlatforms = Math.abs(nextPlatformPos.x - (currentPlatformPos.x + currentPlatwormWidth));
-
         const bridgeActualLength = this.currentBridge.getComponent(UITransform).contentSize.height * this.currentBridge.scale.y;
 
-        // console.log(`Current platform position: ${currentPlatformPos.x}`);
-        // console.log(`Next platform position: ${nextPlatformPos.x}`);
-        // console.log(`Platform width: ${currentPlatwormWidth}`);
-        // console.log(`Bridge length: ${bridgeActualLength}`);
-        // console.log(`Distance between platforms: ${distanceBetweenPlatforms}`);
+        if (bridgeActualLength > distanceBetweenPlatforms + 10 && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatwormWidth)) {
+            const playerNewX = nextPlatformPos.x;
+            const playerCurrentY = this.player.getPosition().y;
 
-        if (bridgeActualLength > distanceBetweenPlatforms && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatwormWidth)) {
-            this.player.setPosition(nextPlatformPos.x, this.player.getPosition().y);
-            this.score += 10;
+            new Tween(this.player)
+                .to(1, {position: new Vec3(playerNewX, playerCurrentY, 0)}, {easing: 'smooth'})
+                .call(() => {
+                    this.playSoundEffect(this.winSound);
+                    this.resetBridge();
+
+                })
+                .start();
+
+            this.score += 1;
             this.scoreLabel.string = `Score: ${this.score}`;
             console.log("Successful transition to the next platform.");
-
             this.currentPlatform = this.nextPlatform;
-
-            this.moveCamera(nextPlatformPos.x + currentPlatwormWidth);
-
+            this.moveCamera(playerNewX + currentPlatwormWidth);
             this.generateNextPlatform();
 
-            // Обнуление моста после успешного перехода
-            this.resetBridge();
         } else {
-            // this.failureWindow.active = true;
+            this.scoreArray.push(this.score);
+            this.fallDawn();
+
         }
     }
+
+    private fallDawn() {
+        const bridgeActualLength = this.currentBridge.getComponent(UITransform).contentSize.height * this.currentBridge.scale.y;
+        const playerCurrentY = this.player.getPosition().y;
+        const playerCurrentX = this.player.getPosition().x;
+        const playerX = playerCurrentX + bridgeActualLength + this.player.getComponent(UITransform).width;
+        new Tween(this.player)
+            .to(1, {position: new Vec3(playerX, playerCurrentY, 0)}, {easing: 'smooth'})
+            .call(() => {
+                this.playSoundEffect(this.bridgeFallSound);
+                new Tween(this.player)
+                    .to(0.1, {position: new Vec3(playerCurrentX, -1000, 0)}, {easing: 'smooth'})
+                    .start();
+
+                this.currentBridge.setRotationFromEuler(0, 0, -180);
+
+                this.scoreArray.push(this.score);
+                var sortedArray: number[] = this.scoreArray.sort((n1, n2) => n2 - n1);
+
+                this.bestScoreLabel.string = `Best score: ${sortedArray[0]}`;
+                this.failureWindow.active = true;
+            })
+            .start();
+
+    }
+
 
     private moveCamera(targetX: number) {
         const canvasNode = director.getScene().getChildByName("Canvas");
         const cameraNode = canvasNode.getChildByName("Camera");
-        const uiHolderNode = canvasNode.getChildByName("UIHolder"); // Убедитесь, что узел с таким именем существует
+        const uiHolderNode = canvasNode.getChildByName("UIHolder");
+        const failureWindowNode = canvasNode.getChildByName("FailureWindow");
 
         if (canvasNode && cameraNode && uiHolderNode) {
             const currentPosition = cameraNode.getPosition();
             const smoothMove = new Tween(cameraNode)
-                .to(1, { position: new Vec3(targetX, currentPosition.y, currentPosition.z) }, { easing: 'smooth' })
+                .to(1, {position: new Vec3(targetX, currentPosition.y, currentPosition.z)}, {easing: 'smooth'})
                 .start();
 
             const smoothMoveUI = new Tween(uiHolderNode)
-                .to(1, { position: new Vec3(targetX, uiHolderNode.getPosition().y, uiHolderNode.getPosition().z) }, { easing: 'smooth' })
+                .to(1, {position: new Vec3(targetX, uiHolderNode.getPosition().y, uiHolderNode.getPosition().z)}, {easing: 'smooth'})
+                .start();
+
+            const failureWindowNodeUI = new Tween(failureWindowNode)
+                .to(1, {position: new Vec3(targetX, failureWindowNode.getPosition().y, failureWindowNode.getPosition().z)}, {easing: 'smooth'})
                 .start();
         } else {
             console.warn("Не найдены нужные узлы на сцене!");
@@ -134,16 +174,21 @@ export class GameManager extends Component {
     }
 
 
-
-
     private resetBridge() {
-        if (this.currentBridge) {
-            // Сброс параметров моста
-            this.currentBridge.setScale(v3(1, 1, 1)); // Сброс масштаба
-            this.currentBridgeHeight = 0; // Сброс высоты моста
+        const canvas = director.getScene().getChildByName("Canvas");
 
-            // Опционально можно переместить мост вне видимой зоны или деактивировать его
-            this.currentBridge.setPosition(this.player.getPosition().x, -1000); // Пример перемещения вне экрана
+        if (canvas) {
+            let children = canvas.children.slice();
+            for (let child of children) {
+                if (child.name === "Bridge") {
+                    canvas.removeChild(child);
+                    child.destroy();
+                    this.currentBridge.setScale(v3(1, 1, 1));
+                    this.currentBridgeHeight = 0;
+                }
+            }
+        } else {
+            console.error("Canvas not found in the scene!");
         }
     }
 
@@ -153,18 +198,13 @@ export class GameManager extends Component {
         const newPlatform = instantiate(this.platform);
         newPlatform.setParent(canvas);
 
-        // Вычисляем случайное расстояние для новой платформы
         const platformWidth = this.currentPlatform.getComponent(UITransform).contentSize.width;
-        const xRandom = Math.random() * 200 + platformWidth;  // Рандомное расстояние до следующей платформы
+        const xRandom = Math.random() * 200 + platformWidth;
 
-        // Устанавливаем позицию для новой платформы
         newPlatform.setPosition(this.currentPlatform.getPosition().x + xRandom, -590);
 
-        // Обновляем ссылку на следующую платформу
         this.nextPlatform = newPlatform;
     }
-
-
 
 
     private generateBridge() {
@@ -177,28 +217,24 @@ export class GameManager extends Component {
         const playerHeight = this.player.getComponent(UITransform).height;
         this.currentBridge.setPosition(playerPos.x + playerHeight * 7 / 9, playerPos.y - playerHeight / 2, 0);
         this.currentBridge.getComponent(UITransform).anchorY = 0;
-        this.currentBridge.setScale(v3(1, 1, 1)); // Установите начальный масштаб в 1
+        this.currentBridge.setScale(v3(1, 1, 1));
 
         const rigidBody = this.currentBridge.getComponent(RigidBody2D) || this.currentBridge.addComponent(RigidBody2D);
         rigidBody.type = 0;
     }
 
-    generateInitialPlatforms() {
+    private generateInitialPlatforms() {
         const canvas = director.getScene().getChildByName("Canvas");
         const platformInstance: Node = instantiate(this.platform);
         this.node.addChild(platformInstance);
-        const sprite: Sprite | null = platformInstance.getComponent(Sprite);
-        const platformWidth = sprite.spriteFrame.rect.width;
-
-        let xRandom = Math.random() * 200 + platformWidth;  // Даем небольшой случайный разброс для платформ
 
         this.currentPlatform = instantiate(this.platform);
         this.currentPlatform.setParent(canvas);
         this.currentPlatform.setPosition(-350, -590);
 
-        this.nextPlatform = instantiate(this.platform);
-        this.nextPlatform.setParent(canvas);
-        this.nextPlatform.setPosition(this.currentPlatform.getPosition().x + xRandom, -590);
+        this.generateNextPlatform();
+
+
     }
 
     update(deltaTime: number) {
@@ -206,6 +242,44 @@ export class GameManager extends Component {
             this.currentBridgeHeight += this.bridgeGrowthSpeed * deltaTime;
             this.currentBridge.setScale(v3(1, this.currentBridgeHeight, 1));
         }
+    }
+
+    public restartGame() {
+        this.resetBridge();
+        this.score = 0;
+        this.scoreLabel.string = `Score: ${this.score}`;
+
+        this.clearPlatforms();
+
+        this.generateInitialPlatforms();
+
+        const initialPlayerPosition = new Vec3(-350, -340, 0);
+        this.player.setPosition(initialPlayerPosition);
+
+        this.moveCamera(0);
+
+        this.failureWindow.active = false;
+    }
+
+    private clearPlatforms() {
+        const canvas = director.getScene().getChildByName("Canvas");
+        if (canvas) {
+            let children = canvas.children.slice();
+            for (let child of children) {
+                if (child.name === "Platform") {
+                    canvas.removeChild(child);
+                    child.destroy();
+                }
+            }
+        } else {
+            console.error("Canvas not found in the scene!");
+        }
+    }
+
+    private playSoundEffect(sound: AudioClip) {
+        const audioSource = this.node.addComponent(AudioSource);
+        audioSource.clip = sound;
+        audioSource.play();
     }
 
 }

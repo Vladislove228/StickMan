@@ -3,6 +3,7 @@
     "cce:/internal/x/cc": "./chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js",
     "cce:/internal/x/prerequisite-imports": "./chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js",
     "file:///Applications/Cocos/Creator/3.8.3/CocosCreator.app/Contents/Resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts": "./chunks/31/31e3c2f26607ebb67e59edfae1b48b9458089fb9.js",
+    "file:///Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts": "./chunks/40/40ca992cea495e3723c0715c4a38b9918ae854df.js",
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts": "./chunks/94/94ab24ab614f9ae60b5c9dc5790494b56da6ba6d.js",
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts": "./chunks/f5/f5cd09085d4e4747cffdf8262386b34dc0091d4a.js"
   },
@@ -41,13 +42,19 @@
     },
     "./chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js": {
       "__unresolved_0": "./chunks/31/31e3c2f26607ebb67e59edfae1b48b9458089fb9.js",
-      "__unresolved_1": "./chunks/94/94ab24ab614f9ae60b5c9dc5790494b56da6ba6d.js",
-      "__unresolved_2": "./chunks/f5/f5cd09085d4e4747cffdf8262386b34dc0091d4a.js"
+      "__unresolved_1": "./chunks/40/40ca992cea495e3723c0715c4a38b9918ae854df.js",
+      "__unresolved_2": "./chunks/94/94ab24ab614f9ae60b5c9dc5790494b56da6ba6d.js",
+      "__unresolved_3": "./chunks/f5/f5cd09085d4e4747cffdf8262386b34dc0091d4a.js"
     },
     "./chunks/f5/f5cd09085d4e4747cffdf8262386b34dc0091d4a.js": {
       "cc": "./chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js"
     },
     "./chunks/94/94ab24ab614f9ae60b5c9dc5790494b56da6ba6d.js": {
+      "cc": "./chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js"
+    },
+    "./chunks/40/40ca992cea495e3723c0715c4a38b9918ae854df.js": {
+      "__unresolved_0": "./chunks/6a/6a5019a719a9014c047e67aa1cf34453ab8392ce.js",
+      "__unresolved_1": "./chunks/94/94ab24ab614f9ae60b5c9dc5790494b56da6ba6d.js",
       "cc": "./chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js"
     },
     "./chunks/31/31e3c2f26607ebb67e59edfae1b48b9458089fb9.js": {

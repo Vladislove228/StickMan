@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 9362.855000000447,
+      "mTimestamp": 17802.671000003815,
       "chunkId": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b",
       "imports": [
         {
@@ -409,7 +409,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 25504499.526415996,
+      "mTimestamp": 94492895.92708397,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -427,7 +427,7 @@
           }
         },
         {
-          "value": "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts",
+          "value": "file:///Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts",
           "resolved": "__unresolved_1",
           "loc": {
             "start": {
@@ -436,12 +436,12 @@
             },
             "end": {
               "line": 5,
-              "column": 77
+              "column": 79
             }
           }
         },
         {
-          "value": "file:///Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts",
+          "value": "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts",
           "resolved": "__unresolved_2",
           "loc": {
             "start": {
@@ -450,6 +450,20 @@
             },
             "end": {
               "line": 6,
+              "column": 77
+            }
+          }
+        },
+        {
+          "value": "file:///Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts",
+          "resolved": "__unresolved_3",
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
               "column": 74
             }
           }
@@ -461,6 +475,13 @@
           "resolved": {
             "type": "module",
             "url": "file:///Applications/Cocos/Creator/3.8.3/CocosCreator.app/Contents/Resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts"
           },
           "messages": []
         },
@@ -534,7 +555,7 @@
     },
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts": {
       "mTimestamp": {
-        "mtime": 1717353610832.0876,
+        "mtime": 1717944791087.8303,
         "uuid": "65bb5cc6-c076-4285-889d-835aeaca32ee"
       },
       "chunkId": "94ab24ab614f9ae60b5c9dc5790494b56da6ba6d",
@@ -586,7 +607,7 @@
     },
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts": {
       "mTimestamp": {
-        "mtime": 1717090636390.134,
+        "mtime": 1717938155849.2505,
         "uuid": "b7c513d0-0639-4df4-a490-ee2706c9fe0a"
       },
       "chunkId": "f5cd09085d4e4747cffdf8262386b34dc0091d4a",
@@ -602,11 +623,11 @@
           "loc": {
             "start": {
               "line": 1,
-              "column": 48
+              "column": 67
             },
             "end": {
               "line": 1,
-              "column": 52
+              "column": 71
             }
           }
         }
@@ -635,6 +656,97 @@
           "messages": []
         }
       ]
+    },
+    "file:///Users/vladislavkvinto/StickMan/assets/scripts/FailureWindow.ts": {
+      "mTimestamp": {
+        "mtime": 1717934436925.3894,
+        "uuid": "78a8f4f7-b61f-490d-bfc2-33e6ddc087aa"
+      },
+      "chunkId": "40ca992cea495e3723c0715c4a38b9918ae854df",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 65
+            },
+            "end": {
+              "line": 1,
+              "column": 69
+            }
+          }
+        },
+        {
+          "value": "db://assets/scripts/GameManager",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 26
+            },
+            "end": {
+              "line": 2,
+              "column": 59
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "cce:/internal/code-quality/cr.mjs": {
+      "mTimestamp": 1717850299134,
+      "chunkId": "6a5019a719a9014c047e67aa1cf34453ab8392ce",
+      "imports": [],
+      "type": "esm",
+      "resolutions": []
     }
   }
 }

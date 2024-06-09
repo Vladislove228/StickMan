@@ -45,9 +45,7 @@
   },
   "34f6c649-5442-43e3-88bc-7fcb69f5371e": {
     "url": "db://assets/textures/fon_glavniy_ekran3.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "b2b5bd90-e84b-4fb8-bfbc-573163bc5445": {
@@ -214,9 +212,7 @@
   },
   "cb3c26b2-f0e2-4be0-8170-bf299d6c896a": {
     "url": "db://assets/textures/animaciya_poleta/1.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "32da88a3-854f-42b7-a0e1-24e20098e09d@f9941": {
@@ -230,9 +226,7 @@
   },
   "04158df7-134a-4b06-b0f8-912f0c8728b3": {
     "url": "db://assets/textures/animaciya_poleta/2.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "1d318b6c-2e4f-484e-aebf-28b181a73d3f@6c48a": {
@@ -273,9 +267,7 @@
   },
   "5d9505de-5338-4859-9d0e-0fd2721b3b84": {
     "url": "db://assets/textures/animaciya_poleta/3.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "cb3c26b2-f0e2-4be0-8170-bf299d6c896a@f9941": {
@@ -289,9 +281,7 @@
   },
   "05dd93d0-8da2-44c5-9710-28f23d77bd7d": {
     "url": "db://assets/textures/animaciya_poleta/4.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "04158df7-134a-4b06-b0f8-912f0c8728b3@6c48a": {
@@ -332,16 +322,12 @@
   },
   "d076cc67-30b2-498a-b5ad-fba4be7abe29": {
     "url": "db://assets/textures/animaciya_poleta/5.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "7a9dce99-6bad-4e17-a5a8-82b8a75aa582": {
     "url": "db://assets/textures/animaciya_poleta/6.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "5d9505de-5338-4859-9d0e-0fd2721b3b84@6c48a": {
@@ -437,6 +423,7 @@
         "1d318b6c-2e4f-484e-aebf-28b181a73d3f@f9941",
         "b720d974-8061-41d4-bfb6-73e624aeab64",
         "0cd188f5-5f01-45af-8631-b1969a69b626",
+        "4451fafe-7655-48cb-b20c-b85ba17fa0d7",
         "2150db29-d3c3-4099-ab10-f646be1da4f8",
         "bc99dd8c-9977-46ae-9a1a-8cbc7a03b28f",
         "bf2ad7b1-eee9-467d-8dd6-ab2fd8a39d3f"
@@ -599,7 +586,7 @@
     "versionCode": 1
   },
   "4451fafe-7655-48cb-b20c-b85ba17fa0d7": {
-    "url": "db://assets/prefabs/point.prefab",
+    "url": "db://assets/prefabs/Point.prefab",
     "value": {
       "depends": [
         "2cd77e4d-35e8-421a-99cb-cad198139492@f9941"

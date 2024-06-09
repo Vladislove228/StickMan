@@ -36,7 +36,7 @@ System.register(["cc"], function (_export, _context) {
 
       _cclegacy._RF.push({}, "65bb5zGwHZChYidg1rqyjLu", "GameManager", undefined);
 
-      __checkObsolete__(['_decorator', 'Component', 'Node', 'input', 'Input', 'Prefab', 'director', 'instantiate', 'RigidBody2D', 'Vec2', 'Label', 'UITransform', 'v3', 'Vec3', 'Sprite', 'Tween', 'AudioSource', 'AudioClip']);
+      __checkObsolete__(['_decorator', 'Component', 'Node', 'input', 'Input', 'Prefab', 'director', 'instantiate', 'RigidBody2D', 'Label', 'UITransform', 'v3', 'Vec3', 'Tween', 'AudioSource', 'AudioClip']);
 
       ({
         ccclass,
@@ -70,19 +70,24 @@ System.register(["cc"], function (_export, _context) {
           this.isGameStarted = false;
           this.isGrowingBridge = false;
           this.score = 0;
-          this.currentBridge = void 0;
+          this.scoreArray = [];
+          this.currentBridge = null;
           this.currentBridgeHeight = 0;
           this.bridgeGrowthSpeed = 10;
-          this.currentPlatform = void 0;
-          this.nextPlatform = void 0;
-          this.scoreArray = [];
+          this.currentPlatform = null;
+          this.nextPlatform = null;
         }
 
         start() {
+          this.initializeGame();
+        }
+
+        initializeGame() {
           this.playSoundEffect(this.backgroundMusic);
           input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
           input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
           this.generateInitialPlatforms();
+          this.failureWindow.active = false;
         }
 
         onTouchStart() {
@@ -111,12 +116,12 @@ System.register(["cc"], function (_export, _context) {
           const nextPlatformTransform = this.nextPlatform.getComponent(UITransform);
           const currentPlatformPos = this.currentPlatform.getPosition();
           const nextPlatformPos = this.nextPlatform.getPosition();
-          const currentPlatwormWidth = currentPlatformTransform.contentSize.width;
-          const nextPlatwormWidth = nextPlatformTransform.contentSize.width;
-          const distanceBetweenPlatforms = Math.abs(nextPlatformPos.x - (currentPlatformPos.x + currentPlatwormWidth));
+          const currentPlatformWidth = currentPlatformTransform.contentSize.width;
+          const nextPlatformWidth = nextPlatformTransform.contentSize.width;
+          const distanceBetweenPlatforms = Math.abs(nextPlatformPos.x - (currentPlatformPos.x + currentPlatformWidth));
           const bridgeActualLength = this.currentBridge.getComponent(UITransform).contentSize.height * this.currentBridge.scale.y;
 
-          if (bridgeActualLength > distanceBetweenPlatforms + 10 && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatwormWidth)) {
+          if (bridgeActualLength > distanceBetweenPlatforms + 10 && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatformWidth)) {
             const playerNewX = nextPlatformPos.x;
             const playerCurrentY = this.player.getPosition().y;
             new Tween(this.player).to(1, {
@@ -124,14 +129,18 @@ System.register(["cc"], function (_export, _context) {
             }, {
               easing: 'smooth'
             }).call(() => {
-              this.playSoundEffect(this.winSound);
               this.resetBridge();
+              this.score += 1;
+
+              if (bridgeActualLength > Math.abs(distanceBetweenPlatforms + nextPlatformWidth / 2 - 10) && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatformWidth / 2 + 15)) {
+                this.score += 1;
+              }
+
+              this.playSoundEffect(this.winSound);
+              this.scoreLabel.string = `Score: ${this.score}`;
             }).start();
-            this.score += 1;
-            this.scoreLabel.string = `Score: ${this.score}`;
-            console.log("Successful transition to the next platform.");
             this.currentPlatform = this.nextPlatform;
-            this.moveCamera(playerNewX + currentPlatwormWidth);
+            this.moveCamera(playerNewX + currentPlatformWidth);
             this.generateNextPlatform();
           } else {
             this.scoreArray.push(this.score);
@@ -214,9 +223,12 @@ System.register(["cc"], function (_export, _context) {
           const canvas = director.getScene().getChildByName("Canvas");
           const newPlatform = instantiate(this.platform);
           newPlatform.setParent(canvas);
-          const platformWidth = this.currentPlatform.getComponent(UITransform).contentSize.width;
-          const xRandom = Math.random() * 200 + platformWidth;
+          const platformHeight = this.currentPlatform.getComponent(UITransform).contentSize.height;
+          const xRandom = Math.random() * (400 - 300) + 300;
           newPlatform.setPosition(this.currentPlatform.getPosition().x + xRandom, -590);
+          const point = instantiate(this.point);
+          point.setParent(newPlatform);
+          point.setPosition(0, platformHeight / 2 + point.getComponent(UITransform).contentSize.height / 2 - 10, 0);
           this.nextPlatform = newPlatform;
         }
 
@@ -227,7 +239,7 @@ System.register(["cc"], function (_export, _context) {
           this.currentBridge.setParent(canvas);
           const playerPos = this.player.getPosition();
           const playerHeight = this.player.getComponent(UITransform).height;
-          this.currentBridge.setPosition(playerPos.x + playerHeight * 7 / 9, playerPos.y - playerHeight / 2, 0);
+          this.currentBridge.setPosition(playerPos.x + playerHeight * 4 / 5, playerPos.y - playerHeight / 2, 0);
           this.currentBridge.getComponent(UITransform).anchorY = 0;
           this.currentBridge.setScale(v3(1, 1, 1));
           const rigidBody = this.currentBridge.getComponent(RigidBody2D) || this.currentBridge.addComponent(RigidBody2D);
@@ -246,7 +258,7 @@ System.register(["cc"], function (_export, _context) {
 
         update(deltaTime) {
           if (this.isGrowingBridge && this.currentBridge) {
-            this.currentBridgeHeight += this.bridgeGrowthSpeed * deltaTime;
+            this.currentBridgeHeight += this.bridgeGrowthSpeed * 2 * deltaTime;
             this.currentBridge.setScale(v3(1, this.currentBridgeHeight, 1));
           }
         }

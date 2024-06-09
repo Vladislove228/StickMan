@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "point",
+    "_name": "Point",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "point",
+    "_name": "Point",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -73,7 +73,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 10,
+      "width": 20,
       "height": 10
     },
     "_anchorPoint": {

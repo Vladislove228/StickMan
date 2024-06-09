@@ -1,5 +1,6 @@
-import { _decorator, Component, director, Node, Tween, Vec3 } from 'cc';
-const { ccclass, property } = _decorator;
+import {_decorator, Component, director, Node, Tween, Vec3} from 'cc';
+
+const {ccclass, property} = _decorator;
 
 @ccclass('MainMenu')
 export class MainMenu extends Component {
@@ -9,7 +10,7 @@ export class MainMenu extends Component {
     @property(Node)
     platform: Node;
 
-    private animationsCompleted = 0;  // Счетчик завершенных анимаций
+    private animationsCompleted = 0;
 
     start() {
     }
@@ -19,14 +20,14 @@ export class MainMenu extends Component {
         const platformCurrentY = this.platform.getPosition().y;
 
         new Tween(this.player)
-            .to(1.0, { position: new Vec3(-350, playerCurrentY, 0) }, { easing: 'quadInOut' })
+            .to(1.0, {position: new Vec3(-350, playerCurrentY, 0)}, {easing: 'quadInOut'})
             .call(() => {
                 this.checkAllAnimationsCompleted();
             })
             .start();
 
         new Tween(this.platform)
-            .to(1.0, { position: new Vec3(-350, platformCurrentY, 0) }, { easing: 'quadInOut' })
+            .to(1.0, {position: new Vec3(-350, platformCurrentY, 0)}, {easing: 'quadInOut'})
             .call(() => {
                 this.checkAllAnimationsCompleted();
             })
@@ -35,13 +36,13 @@ export class MainMenu extends Component {
 
     private checkAllAnimationsCompleted() {
         this.animationsCompleted++;
-        if (this.animationsCompleted >= 2) {  // Проверяем, что обе анимации завершены
+        if (this.animationsCompleted >= 2) {
             director.loadScene("MainScene");
         }
     }
 
     private startGame() {
-        this.animationsCompleted = 0;  // Сброс счетчика
+        this.animationsCompleted = 0;
         this.initializeAnimation();
     }
 

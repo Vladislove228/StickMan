@@ -16,15 +16,12 @@
     "/Users/vladislavkvinto/StickMan/assets/textures.meta": {
       "time": 1717088855554.4756
     },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta.meta": {
-      "time": 1716994157000
-    },
     "/Users/vladislavkvinto/StickMan/assets/animations": {
       "time": 1717091596538.6765,
       "uuid": "54b1a50a-df05-4fe0-98c5-e57412d43635"
     },
     "/Users/vladislavkvinto/StickMan/assets/prefabs": {
-      "time": 1717944740520.0164,
+      "time": 1717950044991.3994,
       "uuid": "09689a56-8622-4d64-97f7-35ed3dd3634a"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes": {
@@ -32,24 +29,17 @@
       "uuid": "e4878d43-6d9a-49f3-a0e5-5509e466e568"
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts": {
-      "time": 1717944791087.9185,
+      "time": 1717955559741.3303,
       "uuid": "f9b6df97-3a3e-4d36-bf0f-963af94eebd4"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures": {
-      "time": 1717944813506.9795,
+      "time": 1717955061962.1716,
       "uuid": "bc904e34-6fc5-432d-a051-f04b4de38c56"
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta": {
-      "time": 1717944725011.524,
-      "uuid": "14842078-6b59-4327-93c9-c2b21acadffb"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/fon2.png.meta": {
       "time": 1716994157000
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/fonLoose.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/fon_glavniy_ekran3.png.meta": {
       "time": 1716994157000
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/home_statik.png.meta": {
@@ -67,24 +57,6 @@
     "/Users/vladislavkvinto/StickMan/assets/textures/restart_statik.png.meta": {
       "time": 1716994157000
     },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/1.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/2.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/3.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/4.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/5.png.meta": {
-      "time": 1716994157000
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/6.png.meta": {
-      "time": 1716994157000
-    },
     "/Users/vladislavkvinto/StickMan/assets/textures/home_statik.png": {
       "time": 1716994157000,
       "uuid": "b2b5bd90-e84b-4fb8-bfbc-573163bc5445"
@@ -97,10 +69,6 @@
       "time": 1716994157000,
       "uuid": "9b92f4e1-35db-48cb-b975-f1c45b7904e7"
     },
-    "/Users/vladislavkvinto/StickMan/assets/textures/fon_glavniy_ekran3.png": {
-      "time": 1716994157000,
-      "uuid": "34f6c649-5442-43e3-88bc-7fcb69f5371e"
-    },
     "/Users/vladislavkvinto/StickMan/assets/textures/play_statik.png": {
       "time": 1716994157000,
       "uuid": "32da88a3-854f-42b7-a0e1-24e20098e09d"
@@ -109,43 +77,19 @@
       "time": 1716994157000,
       "uuid": "1d318b6c-2e4f-484e-aebf-28b181a73d3f"
     },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/1.png": {
-      "time": 1716994157000,
-      "uuid": "cb3c26b2-f0e2-4be0-8170-bf299d6c896a"
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/2.png": {
-      "time": 1716994157000,
-      "uuid": "04158df7-134a-4b06-b0f8-912f0c8728b3"
-    },
     "/Users/vladislavkvinto/StickMan/assets/textures/player.png": {
       "time": 1717070933457.9517,
       "uuid": "76a01175-2b47-45ab-b497-e63dacfb6c2a"
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/3.png": {
-      "time": 1716994157000,
-      "uuid": "5d9505de-5338-4859-9d0e-0fd2721b3b84"
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/4.png": {
-      "time": 1716994157000,
-      "uuid": "05dd93d0-8da2-44c5-9710-28f23d77bd7d"
     },
     "/Users/vladislavkvinto/StickMan/assets/textures/prepyadstvie.png": {
       "time": 1716994157000,
       "uuid": "da5ff0ff-ad43-4ed3-98e1-6652828fd3c6"
     },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/5.png": {
-      "time": 1716994157000,
-      "uuid": "d076cc67-30b2-498a-b5ad-fba4be7abe29"
-    },
-    "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/6.png": {
-      "time": 1716994157000,
-      "uuid": "7a9dce99-6bad-4e17-a5a8-82b8a75aa582"
-    },
     "/Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts.meta": {
       "time": 1717089267373.4062
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts": {
-      "time": 1717944791087.8303,
+      "time": 1717955559741.2676,
       "uuid": "65bb5cc6-c076-4285-889d-835aeaca32ee"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainMenu.scene.meta": {
@@ -159,14 +103,14 @@
       "time": 1717089756131.1484
     },
     "/Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts": {
-      "time": 1717938155849.2505,
+      "time": 1717952718757.0295,
       "uuid": "b7c513d0-0639-4df4-a490-ee2706c9fe0a"
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainScene.scene.meta": {
       "time": 1717088918716.0667
     },
     "/Users/vladislavkvinto/StickMan/assets/scenes/MainScene.scene": {
-      "time": 1717941992412.7087,
+      "time": 1717950044410.1658,
       "uuid": "09762e60-750f-4bde-85d0-4d7521fef822"
     },
     "/Users/vladislavkvinto/StickMan/assets/prefabs/Platform.prefab.meta": {
@@ -225,11 +169,11 @@
       "time": 1717944631602.088,
       "uuid": "2cd77e4d-35e8-421a-99cb-cad198139492"
     },
-    "/Users/vladislavkvinto/StickMan/assets/prefabs/point.prefab.meta": {
-      "time": 1717944740522.998
+    "/Users/vladislavkvinto/StickMan/assets/prefabs/Point.prefab.meta": {
+      "time": 1717950044996.0796
     },
-    "/Users/vladislavkvinto/StickMan/assets/prefabs/point.prefab": {
-      "time": 1717944796352.5452,
+    "/Users/vladislavkvinto/StickMan/assets/prefabs/Point.prefab": {
+      "time": 1717955566926.6067,
       "uuid": "4451fafe-7655-48cb-b20c-b85ba17fa0d7"
     }
   },
@@ -293,6 +237,51 @@
       "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/point.png",
       "time": 1717944631602.088,
       "removeTime": 1717944725012
+    },
+    "4451fafe-7655-48cb-b20c-b85ba17fa0d7": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/prefabs/point.prefab",
+      "time": 1717944796352.5452,
+      "removeTime": 1717950044988
+    },
+    "14842078-6b59-4327-93c9-c2b21acadffb": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta",
+      "time": 1717944725011.524,
+      "removeTime": 1717955053625
+    },
+    "cb3c26b2-f0e2-4be0-8170-bf299d6c896a": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/1.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "04158df7-134a-4b06-b0f8-912f0c8728b3": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/2.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "5d9505de-5338-4859-9d0e-0fd2721b3b84": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/3.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "05dd93d0-8da2-44c5-9710-28f23d77bd7d": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/4.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "d076cc67-30b2-498a-b5ad-fba4be7abe29": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/5.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "7a9dce99-6bad-4e17-a5a8-82b8a75aa582": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/animaciya_poleta/6.png",
+      "time": 1716994157000,
+      "removeTime": 1717955053625
+    },
+    "34f6c649-5442-43e3-88bc-7fcb69f5371e": {
+      "path": "/Users/vladislavkvinto/StickMan/assets/textures/fon_glavniy_ekran3.png",
+      "time": 1716994157000,
+      "removeTime": 1717955061964
     }
   }
 }

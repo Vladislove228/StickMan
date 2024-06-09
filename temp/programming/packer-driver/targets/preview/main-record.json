@@ -409,7 +409,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 94492895.92708397,
+      "mTimestamp": 105262174.91899991,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -555,7 +555,7 @@
     },
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/GameManager.ts": {
       "mTimestamp": {
-        "mtime": 1717944791087.8303,
+        "mtime": 1717955559741.2676,
         "uuid": "65bb5cc6-c076-4285-889d-835aeaca32ee"
       },
       "chunkId": "94ab24ab614f9ae60b5c9dc5790494b56da6ba6d",
@@ -607,7 +607,7 @@
     },
     "file:///Users/vladislavkvinto/StickMan/assets/scripts/MainMenu.ts": {
       "mTimestamp": {
-        "mtime": 1717938155849.2505,
+        "mtime": 1717952718757.0295,
         "uuid": "b7c513d0-0639-4df4-a490-ee2706c9fe0a"
       },
       "chunkId": "f5cd09085d4e4747cffdf8262386b34dc0091d4a",
@@ -623,11 +623,11 @@
           "loc": {
             "start": {
               "line": 1,
-              "column": 67
+              "column": 65
             },
             "end": {
               "line": 1,
-              "column": 71
+              "column": 69
             }
           }
         }

@@ -44,7 +44,6 @@ System.register(["cc"], function (_export, _context) {
           this.animationsCompleted = 0;
         }
 
-        // Счетчик завершенных анимаций
         start() {}
 
         initializeAnimation() {
@@ -70,14 +69,12 @@ System.register(["cc"], function (_export, _context) {
           this.animationsCompleted++;
 
           if (this.animationsCompleted >= 2) {
-            // Проверяем, что обе анимации завершены
             director.loadScene("MainScene");
           }
         }
 
         startGame() {
-          this.animationsCompleted = 0; // Сброс счетчика
-
+          this.animationsCompleted = 0;
           this.initializeAnimation();
         }
 

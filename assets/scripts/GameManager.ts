@@ -1,64 +1,44 @@
 import {
-    _decorator, Component, Node, input, Input, Prefab, director, instantiate, RigidBody2D, Vec2,
-    Label, UITransform, v3, Vec3, Sprite, Tween, AudioSource, AudioClip
+    _decorator, Component, Node, input, Input, Prefab, director, instantiate, RigidBody2D,
+    Label, UITransform, v3, Vec3, Tween, AudioSource, AudioClip
 } from 'cc';
 
 const {ccclass, property} = _decorator;
 
 @ccclass('GameManager')
 export class GameManager extends Component {
+    @property(Node) player: Node;
+    @property(Prefab) platform: Prefab;
+    @property(Node) failureWindow: Node;
+    @property(Prefab) bridge: Prefab;
+    @property(Prefab) point: Prefab;
+    @property(Label) scoreLabel: Label;
+    @property(Label) bestScoreLabel: Label;
+    @property(AudioClip) backgroundMusic: AudioClip;
+    @property(AudioClip) bridgeFallSound: AudioClip;
+    @property(AudioClip) winSound: AudioClip;
 
-    @property(Node)
-    player: Node;
-
-    @property(Prefab)
-    platform: Prefab;
-
-    @property(Node)
-    failureWindow: Node;
-
-    @property(Prefab)
-    bridge: Prefab;
-
-    @property(Prefab)
-    point: Prefab;
-
-    @property(Label)
-    scoreLabel: Label;
-
-    @property(Label)
-    bestScoreLabel: Label;
-
-    @property(AudioClip)
-    backgroundMusic: AudioClip;
-
-    @property(AudioClip)
-    bridgeFallSound: AudioClip;
-
-    @property(AudioClip)
-    winSound: AudioClip;
-
-
-    isGameStarted = false;
-    isGrowingBridge = false;
-    score = 0;
-    currentBridge: Node;
-    currentBridgeHeight = 0;
-    bridgeGrowthSpeed = 10;
-
-    currentPlatform: Node;
-    nextPlatform: Node;
-
-    scoreArray = [];
+    private isGameStarted = false;
+    private isGrowingBridge = false;
+    private score = 0;
+    private scoreArray: number[] = [];
+    private currentBridge: Node | null = null;
+    private currentBridgeHeight = 0;
+    private bridgeGrowthSpeed = 10;
+    private currentPlatform: Node | null = null;
+    private nextPlatform: Node | null = null;
 
     start() {
+        this.initializeGame();
 
+    }
+
+    initializeGame() {
         this.playSoundEffect(this.backgroundMusic);
-
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         this.generateInitialPlatforms();
-
+        this.failureWindow.active = false;
     }
 
     onTouchStart() {
@@ -73,7 +53,6 @@ export class GameManager extends Component {
         if (this.currentBridge) {
             this.scheduleOnce(() => {
                 this.currentBridge.setRotationFromEuler(0, 0, -90);
-
                 this.scheduleOnce(() => {
                     this.goNextPlatform();
                 }, 0.5);
@@ -81,47 +60,45 @@ export class GameManager extends Component {
         }
     }
 
-
     private goNextPlatform() {
-
         const currentPlatformTransform = this.currentPlatform.getComponent(UITransform);
         const nextPlatformTransform = this.nextPlatform.getComponent(UITransform);
 
         const currentPlatformPos = this.currentPlatform.getPosition();
         const nextPlatformPos = this.nextPlatform.getPosition();
 
-        const currentPlatwormWidth = currentPlatformTransform.contentSize.width;
-        const nextPlatwormWidth = nextPlatformTransform.contentSize.width;
+        const currentPlatformWidth = currentPlatformTransform.contentSize.width;
+        const nextPlatformWidth = nextPlatformTransform.contentSize.width;
 
-        const distanceBetweenPlatforms = Math.abs(nextPlatformPos.x - (currentPlatformPos.x + currentPlatwormWidth));
+        const distanceBetweenPlatforms = Math.abs(nextPlatformPos.x - (currentPlatformPos.x + currentPlatformWidth));
         const bridgeActualLength = this.currentBridge.getComponent(UITransform).contentSize.height * this.currentBridge.scale.y;
 
-        if (bridgeActualLength > distanceBetweenPlatforms + 10 && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatwormWidth)) {
+        if (bridgeActualLength > distanceBetweenPlatforms + 10 && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatformWidth)) {
             const playerNewX = nextPlatformPos.x;
             const playerCurrentY = this.player.getPosition().y;
 
             new Tween(this.player)
                 .to(1, {position: new Vec3(playerNewX, playerCurrentY, 0)}, {easing: 'smooth'})
                 .call(() => {
-                    this.playSoundEffect(this.winSound);
                     this.resetBridge();
-
+                    this.score += 1;
+                    if (bridgeActualLength > Math.abs(distanceBetweenPlatforms + nextPlatformWidth / 2 - 10) && bridgeActualLength < Math.abs(distanceBetweenPlatforms + nextPlatformWidth / 2 + 15)) {
+                        this.score += 1;
+                    }
+                    this.playSoundEffect(this.winSound);
+                    this.scoreLabel.string = `Score: ${this.score}`;
                 })
                 .start();
 
-            this.score += 1;
-            this.scoreLabel.string = `Score: ${this.score}`;
-            console.log("Successful transition to the next platform.");
             this.currentPlatform = this.nextPlatform;
-            this.moveCamera(playerNewX + currentPlatwormWidth);
+            this.moveCamera(playerNewX + currentPlatformWidth);
             this.generateNextPlatform();
-
         } else {
             this.scoreArray.push(this.score);
             this.fallDawn();
-
         }
     }
+
 
     private fallDawn() {
         const bridgeActualLength = this.currentBridge.getComponent(UITransform).contentSize.height * this.currentBridge.scale.y;
@@ -148,7 +125,6 @@ export class GameManager extends Component {
 
     }
 
-
     private moveCamera(targetX: number) {
         const canvasNode = director.getScene().getChildByName("Canvas");
         const cameraNode = canvasNode.getChildByName("Camera");
@@ -173,7 +149,6 @@ export class GameManager extends Component {
         }
     }
 
-
     private resetBridge() {
         const canvas = director.getScene().getChildByName("Canvas");
 
@@ -192,20 +167,22 @@ export class GameManager extends Component {
         }
     }
 
-
     private generateNextPlatform() {
         const canvas = director.getScene().getChildByName("Canvas");
         const newPlatform = instantiate(this.platform);
         newPlatform.setParent(canvas);
 
-        const platformWidth = this.currentPlatform.getComponent(UITransform).contentSize.width;
-        const xRandom = Math.random() * 200 + platformWidth;
+        const platformHeight = this.currentPlatform.getComponent(UITransform).contentSize.height;
+        const xRandom = Math.random() * (400 - 300) + 300;
 
         newPlatform.setPosition(this.currentPlatform.getPosition().x + xRandom, -590);
 
+        const point = instantiate(this.point);
+        point.setParent(newPlatform);
+        point.setPosition(0, platformHeight / 2 + point.getComponent(UITransform).contentSize.height / 2 - 10, 0);
+
         this.nextPlatform = newPlatform;
     }
-
 
     private generateBridge() {
         this.isGrowingBridge = true;
@@ -215,13 +192,14 @@ export class GameManager extends Component {
 
         const playerPos = this.player.getPosition();
         const playerHeight = this.player.getComponent(UITransform).height;
-        this.currentBridge.setPosition(playerPos.x + playerHeight * 7 / 9, playerPos.y - playerHeight / 2, 0);
+        this.currentBridge.setPosition(playerPos.x + playerHeight * 4 / 5, playerPos.y - playerHeight / 2, 0);
         this.currentBridge.getComponent(UITransform).anchorY = 0;
         this.currentBridge.setScale(v3(1, 1, 1));
 
         const rigidBody = this.currentBridge.getComponent(RigidBody2D) || this.currentBridge.addComponent(RigidBody2D);
         rigidBody.type = 0;
     }
+
 
     private generateInitialPlatforms() {
         const canvas = director.getScene().getChildByName("Canvas");
@@ -239,7 +217,7 @@ export class GameManager extends Component {
 
     update(deltaTime: number) {
         if (this.isGrowingBridge && this.currentBridge) {
-            this.currentBridgeHeight += this.bridgeGrowthSpeed * deltaTime;
+            this.currentBridgeHeight += this.bridgeGrowthSpeed * 2 * deltaTime;
             this.currentBridge.setScale(v3(1, this.currentBridgeHeight, 1));
         }
     }
